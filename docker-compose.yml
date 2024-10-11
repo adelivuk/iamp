@@ -1,0 +1,59 @@
+services:
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - iamp-app
+  #   ports:
+  #     - "3000:3000"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - iamp-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=admin123!
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
+      - DB_NAME=iam
+      - DB_USER=sa
+      - DB_PASSWORD=admin123!
+      - DB_HOST=db
+    command: >
+      /bin/bash -c "
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py createsuperuser --no-input &&
+      python manage.py runserver 0.0.0.0:8000
+      "
+
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: mssql
+    environment:
+      SA_PASSWORD: "admin123!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    networks:
+      - iamp-app
+
+
+networks:
+  iamp-app:
+    driver: bridge
+
+volumes:
+  mssql-data:
