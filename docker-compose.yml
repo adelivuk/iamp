@@ -25,7 +25,7 @@ services:
       - DB_NAME=iam
       - DB_USER=sa
       - DB_PASSWORD=admin123!
-      - DB_HOST=db
+      - DB_HOST=mssql
     command: >
       /bin/bash -c "
       python manage.py makemigrations &&
