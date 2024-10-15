@@ -1,13 +1,6 @@
 #!/bin/bash
 
-# Start SQL Server in the background
-/opt/mssql/bin/sqlservr &
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! running entrypoint.sh !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
-# Wait for SQL Server to start
-sleep 30s
-
-# Run the SQL script to create the database
-/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P admin123! -i init-db.sql
-
-# Keep the container running
-wait
+# Run Microsoft SQl Server and initialization script (at the same time)
+/usr/src/app/run-initialization.sh & /opt/mssql/bin/sqlservr

@@ -1,1 +1,4 @@
-CREATE DATABASE iam;
+CREATE DATABASE [iam];
+GO
+USE iam;
+GO
