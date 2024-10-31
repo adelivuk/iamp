@@ -13,14 +13,3 @@ class Account(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
-
-# @receiver(post_save, sender=Account)
-# def send_sponsor_email(sender, instance, created, **kwargs):
-#     if created:
-#         send_mail(
-#             'Account Created',
-#             f'An account has been created for {instance.first_name} {instance.last_name}.',
-#             'from@example.com',  # Replace with your "from" email address
-#             [instance.sponsor_email],
-#             fail_silently=False,
-#         )
