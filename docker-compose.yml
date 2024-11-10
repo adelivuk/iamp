@@ -8,42 +8,43 @@ services:
     ports:
       - "3000:3000"
 
-  # db:
-  #   build:
-  #     context: ./db
-  #     dockerfile: Dockerfile
-  #   container_name: mssql
-  #   environment:
-  #     SA_PASSWORD: "admin123!"
-  #     ACCEPT_EULA: "Y"
-  #     MSSQL_PID: "Express"
-  #   ports:
-  #     - "1433:1433"
-  #   volumes:
-  #     - mssql-data:/var/opt/mssql
-  #   networks:
-  #     - iamp-app
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    container_name: mssql
+    environment:
+      SA_PASSWORD: "admin123!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    networks:
+      - iamp-app
 
-  # backend:
-  #   build:
-  #     context: ./backend
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     - iamp-app
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - db
-  #   command: >
-  #     /bin/bash -c "
-  #     python manage.py makemigrations &&
-  #     python manage.py migrate &&
-  #     python manage.py runserver 0.0.0.0:8000
-  #     "
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - iamp-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: >
+      /bin/bash -c "
+      DJANGO_SUPERUSER_PASSWORD=admin123! python manage.py createsuperuser --username admin --email admin@email.com --noinput &&
+      python manage.py makemigrations &&
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
 
 networks:
   iamp-app:
     driver: bridge
 
-# volumes:
-#   mssql-data:
+volumes:
+  mssql-data:

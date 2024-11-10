@@ -45,6 +45,8 @@ COPY . /usr/src/app
 # Grant permissions for the run-initialization script to be executable
 USER root
 RUN chmod +x /usr/src/app/run-initialization.sh
+# RUN chown -R mssql:mssql /var/opt/mssql
+# RUN chmod -R 770 /var/opt/mssql
 
 # Set environment variables, not to have to write them with docker run command
 # Note: make sure that your password matches what is in the run-initialization script
