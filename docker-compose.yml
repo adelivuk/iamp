@@ -1,12 +1,12 @@
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    networks:
-      - iamp-app
-    ports:
-      - "3000:3000"
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   networks:
+  #     - iamp-app
+  #   ports:
+  #     - "3000:3000"
 
   db:
     build:
@@ -34,13 +34,14 @@ services:
       - "8000:8000"
     depends_on:
       - db
-    command: >
-      /bin/bash -c "
-      DJANGO_SUPERUSER_PASSWORD=admin123! python manage.py createsuperuser --username admin --email admin@email.com --noinput &&
-      python manage.py makemigrations &&
-      python manage.py migrate &&
-      python manage.py runserver 0.0.0.0:8000
-      "
+    entrypoint: ["/bin/bash", "/code/entrypoint.sh"]
+    # command: >
+    #   /bin/bash -c "
+    #   DJANGO_SUPERUSER_PASSWORD=admin123! python manage.py createsuperuser --username admin --email admin@email.com --noinput &&
+    #   python manage.py makemigrations &&
+    #   python manage.py migrate &&
+    #   python manage.py runserver 0.0.0.0:8000
+    #   "
 
 networks:
   iamp-app:

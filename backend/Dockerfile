@@ -23,9 +23,11 @@ RUN apk add --allow-untrusted msodbcsql17_17.10.5.1-1_amd64.apk
 RUN apk add --allow-untrusted mssql-tools_17.10.1.1-1_amd64.apk
 
 
-RUN mkdir /code
 WORKDIR /code
 ADD . /code/
+
+RUN chmod +x /code/entrypoint.sh
+
 RUN pip install -r requirements.txt
 
 EXPOSE 8000

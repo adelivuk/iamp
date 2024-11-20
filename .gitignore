@@ -1,2 +1,23 @@
 venv
-frontend/node_modules
+node_modules
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Django migrations
+accounts/migrations/__pycache__/
+accounts/migrations/*.pyc
+
+# Environment variables
+.env
+
+# Static files
+staticfiles/
+media/
+
+# Logs
+*.log
+
+# Other
+*.swp
