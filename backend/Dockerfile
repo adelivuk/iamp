@@ -4,7 +4,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apk update
-RUN apk add unixodbc-dev g++ bash gnupg curl
+RUN apk add unixodbc-dev g++ bash gnupg curl inetutils-telnet
 
 #Download the desired package(s)
 RUN curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.5.1-1_amd64.apk

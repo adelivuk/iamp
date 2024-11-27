@@ -1,12 +1,12 @@
 services:
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   networks:
-  #     - iamp-app
-  #   ports:
-  #     - "3000:3000"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - iamp-app
+    ports:
+      - "3000:3000"
 
   db:
     build:
@@ -35,6 +35,8 @@ services:
     depends_on:
       - db
     entrypoint: ["/bin/bash", "/code/entrypoint.sh"]
+    environment:
+      - SENDGRID_API_KEY=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
     # command: >
     #   /bin/bash -c "
     #   DJANGO_SUPERUSER_PASSWORD=admin123! python manage.py createsuperuser --username admin --email admin@email.com --noinput &&

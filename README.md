@@ -26,3 +26,10 @@ python manage.py createsuperuser
 https://github.com/django-extensions/django-extensions
 
 https://medium.com/@analyticscodeexplained/running-microsoft-sql-server-in-docker-a8dfdd246e45
+
+
+
+reset password
+add your email and YOU get the mail with the link to the interface for adding the password and uses the AD logic
+password strength
+email check

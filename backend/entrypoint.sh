@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! start entrypoint.sh !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+
 # Wait for the database to be ready
 # until python manage.py migrate; do
 #  echo "Waiting for database to be ready..."
@@ -18,3 +21,7 @@ if not User.objects.filter(username='admin').exists():
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
+
+
+
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! end entrypoint.sh !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
