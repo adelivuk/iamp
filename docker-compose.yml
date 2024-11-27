@@ -37,13 +37,6 @@ services:
     entrypoint: ["/bin/bash", "/code/entrypoint.sh"]
     environment:
       - "${SENDGRID_API_KEY}"
-    # command: >
-    #   /bin/bash -c "
-    #   DJANGO_SUPERUSER_PASSWORD=admin123! python manage.py createsuperuser --username admin --email admin@email.com --noinput &&
-    #   python manage.py makemigrations &&
-    #   python manage.py migrate &&
-    #   python manage.py runserver 0.0.0.0:8000
-    #   "
 
 networks:
   iamp-app:
