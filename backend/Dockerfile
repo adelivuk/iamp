@@ -28,7 +28,7 @@ ADD . /code/
 
 RUN chmod +x /code/entrypoint.sh
 
-RUN pip install -r requirements.txt
+RUN pip -no-cache-dir install -r requirements.txt
 
 EXPOSE 8000
 
