@@ -8,9 +8,6 @@ import LoggedIn from './pages/LoggedIn';
 
 import ProtectedRoute from './components/ProtectedRoute.tsx';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "bootstrap-icons/font/bootstrap-icons.css";
-
 function Logout() {
   localStorage.clear();
   return <Navigate to="/login" />

@@ -36,7 +36,7 @@ services:
       - db
     entrypoint: ["/bin/bash", "/code/entrypoint.sh"]
     environment:
-      - SENDGRID_API_KEY=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
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
 
 networks:
   iamp-app:
