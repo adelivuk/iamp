@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import {Link} from 'react-router-dom';
 
 interface HomeLayoutProps {
   children: ReactNode;
@@ -8,16 +7,11 @@ interface HomeLayoutProps {
 function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <div>
-    <header>
-      <nav>
-
-      </nav>
-
-    </header>
-
-    <main>
-        {children}
-    </main>
+      <main className="h-full bg-white">
+        <div className="h-full">
+          {children}
+        </div>
+      </main>
     </div>
   );
 }
