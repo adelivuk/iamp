@@ -7,8 +7,8 @@ interface HomeLayoutProps {
 function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <div>
-      <main className="h-full bg-white">
-        <div className="h-full">
+      <main className="bg-main bg-cover bg-center h-screen">
+        <div className="flex h-screen justify-center items-center">
           {children}
         </div>
       </main>

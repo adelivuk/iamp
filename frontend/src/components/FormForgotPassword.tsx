@@ -4,7 +4,7 @@ import api from "../api";
 import "../styles/Form.css"
 import LoadingIndicator from "./LoadingIndicator";
 
-function Form() {
+function FormForgotPassword() {
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
     // const navigate = useNavigate();
@@ -18,7 +18,7 @@ function Form() {
             const res = await api.post('/api/accounts/reset-password', { email })
             console.log(res)
 
-            // if (method === "login") {
+            // if (method === "login") {s
             //     localStorage.setItem(ACCESS_TOKEN, res.data.access);
             //     localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
             //     navigate("/logged-in")
@@ -51,4 +51,4 @@ function Form() {
     );
 }
 
-export default Form
+export default FormForgotPassword

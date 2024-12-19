@@ -8,7 +8,10 @@ module.exports = {
     extend: {
       colors: {
         'blue': '#005EB8',
-      }
+      },
+      backgroundImage: {
+        'main': "url('/src/assets/background.png')",
+      },
     }
   },
 }
