@@ -128,3 +128,7 @@ The password must not contain two consecutive identical characters .
  https://stackoverflow.com/questions/37847042/changing-active-directory-user-password-in-python-3-x
 
  dc, pass, search base, filter ping M
+
+
+
+ 6LcICbAqAAAAAIrEE8MIzdKzJv18GCtWL1xi2M2T
