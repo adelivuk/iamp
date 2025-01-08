@@ -1,4 +1,3 @@
-import '../styles/Home.css';
 import HomeLayout from '../layouts/Home';
 
 function Home() {

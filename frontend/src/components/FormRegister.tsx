@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef  } from "react";
 import { Link } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
@@ -10,7 +10,6 @@ import api from "../api";
 // import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.ts";
 // import api from "../api.ts";
 
-import "../styles/Form.css";
 import LoadingIndicator from "./LoadingIndicator.tsx";
 
 // interface FormProps {
@@ -26,9 +25,15 @@ function Form() {
   const [loading, setLoading] = useState(false);
   // const navigate = useNavigate();
 
+  const recaptcha = useRef(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
+
+    if (!recaptcha.current.getValue()){
+      alert('Please Submit Captcha')
+    }
 
     try {
       console.log({ firstName, lastName, email, sponsorEmail });
@@ -124,8 +129,9 @@ function Form() {
 
             <div className="flex justify-center">
               <ReCAPTCHA
-                sitekey="6LcICbAqAAAAAIrEE8MIzdKzJv18GCtWL1xi2M2T"
+                sitekey={import.meta.env.VITE_REACT_APP_RECAPTCHA_SITE_KEY}
                 onChange={onChange}
+                ref={recaptcha}
               />
             </div>
 
