@@ -128,3 +128,12 @@ The password must not contain two consecutive identical characters .
  https://stackoverflow.com/questions/37847042/changing-active-directory-user-password-in-python-3-x
 
  dc, pass, search base, filter ping M
+
+
+
+
+
+MIHALCEA Mihut 1/9/2025 9:20 AM • my idea is - but this means more work for you - no matter what the user fills in in the form, we accept it and then process it later
+and if the email already exists in the DB you send a message like " hey, we saw you tried to register again. please go to the portal and actually reset your password"
+if not, we go with the normal process
+but no message in the browser

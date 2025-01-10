@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { Link } from "react-router-dom";
+
 interface HomeLayoutProps {
   children: ReactNode;
 }
@@ -7,19 +9,20 @@ interface HomeLayoutProps {
 function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <div>
-      <div className="min-h-screen h-screen">
+      <div className="min-h-screen h-screen bg-main bg-cover">
 
         <header className="bg-blue w-full p-8 flex items-center">
-          <h1 className="uppercase font-bold text-yellow text-2xl">Welcome to portal Identity Management</h1>
+          <h1 className="uppercase font-bold text-yellow text-2xl"><Link to="/">Welcome to portal Identity Management</Link></h1>
         </header>
 
-        <main className="bg-main bg-cover bg-center flex h-screen justify-center items-center h-[calc(100%-60px-54px)]">
+        <main className="bg-center h-[calc(100vh-96px-88px)] w-full container mx-auto px-4 flex justify-center items-center">
           {children}
         </main>
 
-        <footer className="bg-white flex justify-center p-4 align-center">
-          <p>SRB Access Manager © Single Resolution Board</p>
-          <p>asd</p>
+        <footer>
+          <div className="bg-white p-8 flex items-center justify-center">
+            <p className="text-black">SRB @ 2025</p>
+          </div>
         </footer>
 
       </div>

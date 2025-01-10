@@ -1,11 +1,11 @@
 import { useState, useRef  } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
 import Logo from "../assets/logo.svg";
 
-import api from "../api";
+// import api from "../api";
 
 // import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.ts";
 // import api from "../api.ts";
@@ -17,7 +17,7 @@ import LoadingIndicator from "./LoadingIndicator.tsx";
 //     method: "login" | "register";
 // }
 
-function Form() {
+function FormRegister() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,13 +25,13 @@ function Form() {
   const [loading, setLoading] = useState(false);
   // const navigate = useNavigate();
 
-  const recaptcha = useRef(null);
+  const recaptcha = useRef<ReCAPTCHA | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
 
-    if (!recaptcha.current.getValue()){
+    if (recaptcha.current && !recaptcha.current.getValue()){
       alert('Please Submit Captcha')
     }
 
@@ -152,4 +152,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default FormRegister;
