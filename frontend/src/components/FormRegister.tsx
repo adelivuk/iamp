@@ -63,7 +63,7 @@ function FormRegister() {
   };
 
   const onChange = (value: string | null) => {
-    console.log("Captcha value:", value);
+    console.log('Captcha value:', value);
   };
 
   return (
