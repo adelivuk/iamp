@@ -6,7 +6,7 @@ docker-compose build --no-cache
 docker-compose up
 
 docker system prune
-docker prune system -a
+docker system prune -a --volumes
 
 docker build -t current_folder_name (frontend, backend, db) .
 
@@ -137,3 +137,8 @@ MIHALCEA Mihut 1/9/2025 9:20 AM • my idea is - but this means more work for yo
 and if the email already exists in the DB you send a message like " hey, we saw you tried to register again. please go to the portal and actually reset your password"
 if not, we go with the normal process
 but no message in the browser
+
+
+
+
+TOAST msg for notifications
