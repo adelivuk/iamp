@@ -1,21 +1,18 @@
-import { useState, useRef  } from "react";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
 import Logo from "../assets/logo.svg";
 
-// import api from "../api";
+import api from "../api";
 
 // import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.ts";
 // import api from "../api.ts";
 
 import LoadingIndicator from "./LoadingIndicator.tsx";
 
-// interface FormProps {
-//     route: string;
-//     method: "login" | "register";
-// }
 
 function FormRegister() {
   const [firstName, setFirstName] = useState("");
@@ -23,7 +20,7 @@ function FormRegister() {
   const [email, setEmail] = useState("");
   const [sponsorEmail, setSponsorEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const recaptcha = useRef<ReCAPTCHA | null>(null);
 
@@ -32,29 +29,21 @@ function FormRegister() {
     e.preventDefault();
 
     if (recaptcha.current && !recaptcha.current.getValue()){
-      alert('Please Submit Captcha')
+      alert("Please Submit Captcha")
     }
 
     try {
       console.log({ firstName, lastName, email, sponsorEmail });
-      // const res = await api.post("/api/accounts/", {
-      //   first_name: firstName,
-      //   last_name: lastName,
-      //   email,
-      //   sponsor_email: sponsorEmail,
-      //   username: `${firstName}_${lastName}`,
-      // });
-      // console.log(res);
+      const res = await api.post("/api/accounts/", {
+        first_name: firstName,
+        last_name: lastName,
+        email,
+        sponsor_email: sponsorEmail,
+        username: `${firstName}_${lastName}`,
+      });
+      console.log(res);
 
-      // navigate("/login");
-
-      // if (method === "login") {
-      //     localStorage.setItem(ACCESS_TOKEN, res.data.access);
-      //     localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      //     navigate("/")
-      // } else {
-      //     navigate("/login")
-      // }
+      navigate("/");
     } catch (error) {
       alert(error);
     } finally {
