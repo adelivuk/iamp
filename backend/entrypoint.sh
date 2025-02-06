@@ -20,6 +20,6 @@ if not User.objects.filter(username='admin').exists():
 # Run migrations and start the server
 python manage.py makemigrations
 python manage.py migrate
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:${BE_HOST_MACHINE_PORT}
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! end entrypoint.sh !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

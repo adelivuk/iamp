@@ -4,11 +4,15 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.urls import reverse
 from django.template.loader import render_to_string
 from .models import Account
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 @receiver(post_save, sender=Account)
 def send_verification_email(sender, instance, created, **kwargs):
     if created:
-        verification_link = f"http://localhost:8000{reverse('verify-account', args=[instance.verification_token])}"
+        verification_link = f"http://localhost:{os.getenv('BE_HOST_CONTAINER_PORT')}{reverse('verify-account', args=[instance.verification_token])}"
 
         if instance.sponsor_email:
             context = {

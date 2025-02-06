@@ -41,7 +41,7 @@ services:
     networks:
       - iamp-app
     ports:
-      - "8000:8000"
+      - ${BE_HOST_MACHINE_PORT}:${BE_DOCKER_CONTAINER_PORT}
     depends_on:
       - db
     entrypoint: ["/bin/bash", "/code/entrypoint.sh"]

@@ -31,6 +31,6 @@ RUN chmod +x /code/entrypoint.sh
 RUN pip install --no-cache-dir -r requirements.txt
 
 
-EXPOSE 8000
+EXPOSE ${BE_DOCKER_CONTAINER_PORT}
 
-CMD ["python","/code/manage.py","runserver","0.0.0.0:8000"]
+CMD ["sh", "-c", "python /code/manage.py runserver 0.0.0.0:${BE_HOST_MACHINE_PORT}"]
