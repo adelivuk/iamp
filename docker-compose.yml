@@ -6,7 +6,9 @@ services:
     networks:
       - iamp-app
     ports:
-      - "3000:3000"
+      - ${FE_HOST_MACHINE_PORT}:${FE_DOCKER_CONTAINER_PORT}
+    env_file:
+      - /.env
 
   db:
     build:

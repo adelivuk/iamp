@@ -18,6 +18,6 @@ COPY . .
 
 RUN yarn build
 
-EXPOSE 3000
+EXPOSE ${FE_DOCKER_CONTAINER_PORT}
 
 CMD [ "serve", "-s", "dist" ]

@@ -91,7 +91,7 @@ DATABASES = {
 
         'ENGINE': 'mssql',
         'NAME': 'iam',
-        'HOST': 'mssql',
+        'HOST': 'db',
         'PORT': '1433',
         'USER': 'sa',
         'PASSWORD': 'admin123!',
@@ -145,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000', # FE
-     'http://localhost:5173' # FE
+     'http://localhost:5173', # FE
      'http://127.0.0.1:3000' # FE
 ]
 
