@@ -16,21 +16,23 @@ services:
       dockerfile: Dockerfile
     container_name: mssql
     environment:
-      SA_PASSWORD: "admin123!"
+      SA_PASSWORD: ${DB_PASSWORD}
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Express"
     healthcheck:
-      test: /opt/mssql-tools18/bin/sqlcmd -U sa -P "admin123!" -C -Q "SELECT 1" -b -o /dev/null
+      test: /opt/mssql-tools18/bin/sqlcmd -U sa -P ${DB_PASSWORD} -C -Q "SELECT 1" -b -o /dev/null
       start_period: 10s
       timeout: 2s
       interval: 30s
       retries: 3
     ports:
-      - "1433:1433"
+      - ${DB_HOST_MACHINE_PORT}:${DB_DOCKER_CONTAINER_PORT}
     volumes:
       - mssql-data:/var/opt/mssql
     networks:
       - iamp-app
+    env_file:
+      - /.env
 
   backend:
     build:
@@ -45,6 +47,8 @@ services:
     entrypoint: ["/bin/bash", "/code/entrypoint.sh"]
     environment:
       - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+    env_file:
+      - /.env
 
 networks:
   iamp-app:

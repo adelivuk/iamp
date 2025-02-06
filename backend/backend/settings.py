@@ -92,9 +92,9 @@ DATABASES = {
         'ENGINE': 'mssql',
         'NAME': 'iam',
         'HOST': 'db',
-        'PORT': '1433',
+        'PORT': os.getenv('DB_HOST_MACHINE_PORT'),
         'USER': 'sa',
-        'PASSWORD': 'admin123!',
+        'PASSWORD': os.getenv('DB_PASSWORD'),
         'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server'},
     }
 }

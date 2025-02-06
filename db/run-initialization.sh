@@ -10,4 +10,4 @@
 echo "SQL Server is up and running."
 
 # Run the setup script to create the DB
-/opt/mssql-tools18/bin/sqlcmd -S 127.0.0.1 -U sa -P admin123! -i init-db.sql -C
+/opt/mssql-tools18/bin/sqlcmd -S 127.0.0.1 -U sa -P '${DB_PASSWORD}' -i init-db.sql -C
